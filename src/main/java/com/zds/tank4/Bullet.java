@@ -1,5 +1,6 @@
-package com.zds.tank3;
+package com.zds.tank4;
 
+import com.zds.tank3.Dir;
 import lombok.Data;
 
 import java.awt.*;
@@ -23,11 +24,10 @@ public class Bullet {
     }
     //画出子弹 制作子弹
     public void paint(Graphics g) {
-        System.out.println("paint");
+        System.out.println("bullet==>paint");
         //给子弹上色
         Color color = g.getColor();
-//        int red = color.getRed();
-        g.setColor(Color.BLUE);
+        g.setColor(Color.GREEN);
         //画⚪型
         g.fillOval(x, y, width, height);
         g.setColor(color);

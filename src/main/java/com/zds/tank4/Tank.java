@@ -1,44 +1,41 @@
-package com.zds.tank3;
+package com.zds.tank4;
 
+
+import com.zds.tank3.Dir;
 import lombok.Data;
 
 import java.awt.*;
 
 @Data
-public class Bullet {
+public class Tank {
     private int x,y;
-    //后期坦克的炮管是否于子弹的方向一致
     private Dir dir = Dir.DOWN;
-    private int speed = 5;
+    private int speed = 10;
     //还是分装坦克的状态熟悉 默认静止状态
     private boolean moving = false;
-    // 定义子弹的宽高
-    public int width=20,height=20;
 
 
-    public Bullet(int x, int y, Dir dir) {
+    public Tank(int x, int y, Dir dir, int speed) {
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.speed = speed;
     }
-    //画出子弹 制作子弹
-    public void paint(Graphics g) {
-        System.out.println("paint");
-        //给子弹上色
-        Color color = g.getColor();
-//        int red = color.getRed();
-        g.setColor(Color.BLUE);
-        //画⚪型
-        g.fillOval(x, y, width, height);
-        g.setColor(color);
-        move();
 
+    public void paint(Graphics g) {
+        //这个绘画的颜色为什么没有被调用
+        System.out.println("tank4===>paint");
+        Color color = g.getColor();
+        g.setColor(Color.yellow);
+        g.fillRect(x, y, 50, 50);
+        g.setColor(color);
+
+        //坦克根据传入的方向移动
+        move();
     }
-    //坦克根据传入的方向移动
-    public void move() {
-//        if (!moving) {
-//            return;
-//        } 子弹与坦克的区别 一旦发射就会变为不可控的
+
+    public void move(){
+        if(!moving) {return;}
         switch (dir) {
             case LEFT:
                 x -= speed;
@@ -70,8 +67,5 @@ public class Bullet {
                 break;
 
         }
-
-        //子弹也需要移动的
     }
-
 }
