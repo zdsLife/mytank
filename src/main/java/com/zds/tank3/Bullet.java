@@ -32,6 +32,7 @@ public class Bullet {
         g.fillOval(x, y, width, height);
         g.setColor(color);
         move();
+
     }
     //坦克根据传入的方向移动
     public void move() {
