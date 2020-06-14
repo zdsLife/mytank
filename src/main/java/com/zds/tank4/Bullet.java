@@ -1,6 +1,6 @@
 package com.zds.tank4;
 
-import com.zds.tank3.Dir;
+//import com.zds.tank3.Dir;
 import lombok.Data;
 
 import java.awt.*;

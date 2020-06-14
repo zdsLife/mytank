@@ -1,8 +1,8 @@
 package com.zds.tank4;
 
-import com.zds.tank3.Bullet;
-import com.zds.tank3.Dir;
-import com.zds.tank3.Tank;
+//import com.zds.tank3.Bullet;
+//import com.zds.tank3.Dir;
+//import com.zds.tank3.Tank;
 
 import java.awt.*;
 import java.awt.event.KeyAdapter;

@@ -1,7 +1,7 @@
 package com.zds.tank4;
 
 
-import com.zds.tank3.Dir;
+//import com.zds.tank3.Dir;
 import lombok.Data;
 
 import java.awt.*;
@@ -26,7 +26,7 @@ public class Tank {
         //这个绘画的颜色为什么没有被调用
         System.out.println("tank4===>paint");
         Color color = g.getColor();
-        g.setColor(Color.yellow);
+        g.setColor(Color.red);
         g.fillRect(x, y, 50, 50);
         g.setColor(color);
 
