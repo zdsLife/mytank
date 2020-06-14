@@ -15,6 +15,7 @@ public class Bullet {
     // 定义子弹的宽高
     public int width=20,height=20;
 
+
     public Bullet(int x, int y, Dir dir) {
         this.x = x;
         this.y = y;
