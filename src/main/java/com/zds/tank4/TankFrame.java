@@ -11,7 +11,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class TankFrame extends Frame {
-    Tank tank = new Tank(200,200, Dir.DOWN,10);
+    //这里把这个对象传入给了坦克
+    Tank tank = new Tank(200,200, Dir.DOWN,10,this);
     Bullet bullet =new Bullet(300,300,Dir.DOWN);
     //考虑后期 这个游戏的界面宽度和高度 这里定义位全局变量
     public int GAME_WIDTH=800,GAME_HEIGHT=600;
@@ -73,9 +74,15 @@ public class TankFrame extends Frame {
                 case KeyEvent.VK_RIGHT:
                     br=false;
                     break;
+
                 case KeyEvent.VK_DOWN:
                     bd=false;
                     break;
+                //添加坦克发射的监听方法
+                case KeyEvent.VK_CONTROL:
+                    tank.fire();
+                    break;
+
                 default :
                     break;
 
@@ -154,5 +161,6 @@ public class TankFrame extends Frame {
    //消除子弹的闪烁 涉及屏幕的刷新
     // 拿一个图片覆盖这个游戏界面
     Image offScreenImage = null;
+
 
 }

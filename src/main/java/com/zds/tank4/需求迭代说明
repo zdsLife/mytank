@@ -1,0 +1,11 @@
+
+如何保证你松开ctrl键 可以发射子弹
+
+这里引出了坦克的发射方法  坦克如何和子弹建立联系 坦克类里面持有子弹类的引用指针pointer
+实际上是你得理解tankframe tank 子弹 三者的画画的关系
+
+这里是坦克持有画板TankFrame的引用
+
+现在是tank里面new 子弹 但是子弹需要画在tankframe上
+
+tank 持有tankframe的引用才可以访问tankframe这个对象

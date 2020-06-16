@@ -13,13 +13,16 @@ public class Tank {
     private int speed = 10;
     //还是分装坦克的状态熟悉 默认静止状态
     private boolean moving = false;
+    //持有tankframe 的引用来获取画板 这样构造方法里面new tank的时候可以拿到这个画板
+    private TankFrame tf;
 
 
-    public Tank(int x, int y, Dir dir, int speed) {
+    public Tank(int x, int y, Dir dir, int speed,TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
         this.speed = speed;
+        this.tf = tf;
     }
 
     public void paint(Graphics g) {
@@ -68,4 +71,12 @@ public class Tank {
 
         }
     }
+    //定义坦克的发射方法
+    public void fire(){
+        //注意这里给子弹传的参数是坦克的方向参数
+        //这里是坦克持有子弹 但是如何把这颗子弹 画在tankframe上
+        //这里把创建的tank交给tankFrame
+       tf.bullet = new Bullet(this.x,this.y,this.dir);
+    }
+
 }
