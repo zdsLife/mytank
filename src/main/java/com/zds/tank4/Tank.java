@@ -78,7 +78,7 @@ public class Tank {
         //这里把创建的tank交给tankFrame
 //       tf.bullet = new Bullet(this.x,this.y,this.dir);
         //画一颗子弹 容器中new 出一个子弹
-       tf.bullets.add(new Bullet(this.x,this.y,this.dir));
+       tf.bullets.add(new Bullet(this.x,this.y,this.dir,this.getTf()));
     }
 
 }

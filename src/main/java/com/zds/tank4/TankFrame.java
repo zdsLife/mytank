@@ -17,9 +17,9 @@ public class TankFrame extends Frame {
     List<Bullet> bullets = new ArrayList<Bullet>();
     //这里把这个对象传入给了坦克
     Tank tank = new Tank(200,200, Dir.DOWN,10,this);
-    Bullet bullet =new Bullet(300,300,Dir.DOWN);
+    Bullet bullet =new Bullet(300,300,Dir.DOWN,this);
     //考虑后期 这个游戏的界面宽度和高度 这里定义位全局变量
-    public int GAME_WIDTH=800,GAME_HEIGHT=600;
+    public static int GAME_WIDTH=800,GAME_HEIGHT=600;
     public TankFrame() throws HeadlessException {
         setVisible(true);
         setSize(GAME_WIDTH,GAME_HEIGHT);
@@ -157,9 +157,12 @@ public class TankFrame extends Frame {
     @Override
     public void paint(Graphics g) {
         System.out.println("Tankrame==>paint");
-         tank.paint(g);
-         //画出子弹
-//         bullet.paint(g);
+        //画板左上角打印子弹的数量
+        Color c = g.getColor();
+        g.setColor(Color.WHITE);
+        g.drawString("打出的子弹数量位"+bullets.size(),10,60);
+        g.setColor(c);
+        tank.paint(g);
 
         //对于一次画多颗子弹
         for(Bullet b : bullets){

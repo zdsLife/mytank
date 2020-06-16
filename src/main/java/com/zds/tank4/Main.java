@@ -8,7 +8,7 @@ public class Main {
 
         while(true){
             try {
-                Thread.sleep(1000);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
