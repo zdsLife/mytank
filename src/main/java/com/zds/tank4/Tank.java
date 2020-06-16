@@ -76,7 +76,9 @@ public class Tank {
         //注意这里给子弹传的参数是坦克的方向参数
         //这里是坦克持有子弹 但是如何把这颗子弹 画在tankframe上
         //这里把创建的tank交给tankFrame
-       tf.bullet = new Bullet(this.x,this.y,this.dir);
+//       tf.bullet = new Bullet(this.x,this.y,this.dir);
+        //画一颗子弹 容器中new 出一个子弹
+       tf.bullets.add(new Bullet(this.x,this.y,this.dir));
     }
 
 }

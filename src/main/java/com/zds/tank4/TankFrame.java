@@ -9,8 +9,12 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TankFrame extends Frame {
+    //引入容器装子弹
+    List<Bullet> bullets = new ArrayList<Bullet>();
     //这里把这个对象传入给了坦克
     Tank tank = new Tank(200,200, Dir.DOWN,10,this);
     Bullet bullet =new Bullet(300,300,Dir.DOWN);
@@ -155,7 +159,15 @@ public class TankFrame extends Frame {
         System.out.println("Tankrame==>paint");
          tank.paint(g);
          //画出子弹
-         bullet.paint(g);
+//         bullet.paint(g);
+
+        //对于一次画多颗子弹
+        for(Bullet b : bullets){
+            //每个子弹一次画一遍
+            b.paint(g);
+            //响应的tank的发射方法里面需要 给单个子弹的赋给改为多个赋值
+
+        }
         }
 
    //消除子弹的闪烁 涉及屏幕的刷新
