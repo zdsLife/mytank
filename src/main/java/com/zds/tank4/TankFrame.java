@@ -165,12 +165,15 @@ public class TankFrame extends Frame {
         tank.paint(g);
 
         //对于一次画多颗子弹
-        for(Bullet b : bullets){
-            //每个子弹一次画一遍
-            b.paint(g);
-            //响应的tank的发射方法里面需要 给单个子弹的赋给改为多个赋值
+//        for(Bullet b : bullets){
+//            b.paint(g);
+//            //响应的tank的发射方法里面需要 给单个子弹的赋给改为多个赋值
+//           }
 
-        }
+        for (int i = 0; i < bullets.size(); i++) {
+            bullets.get(i).paint(g);
+          }
+
         }
 
    //消除子弹的闪烁 涉及屏幕的刷新

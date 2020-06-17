@@ -11,7 +11,7 @@ public class Bullet {
     private int x,y;
     //后期坦克的炮管是否于子弹的方向一致
     private Dir dir = Dir.DOWN;
-    private int speed = 5;
+    private int speed = 10;
     //还是分装坦克的状态熟悉 默认静止状态
     private boolean moving = false;
     // 定义子弹的宽高
