@@ -20,3 +20,5 @@ tank 持有tankframe的引用才可以访问tankframe这个对象
 解决Exception in thread "AWT-EventQueue-0" java.util.ConcurrentModificationException的异常
 重写子弹的画法 改for(:) 位for(;;)
 ---------------------------------------------------------------------
+并发修改异常 是因为for(:) 这种事利用内部的一个迭代器来删除的 但是之前删除是在
+判断里面的 这里需要自己手写修正
