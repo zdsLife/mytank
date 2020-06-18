@@ -15,7 +15,12 @@ public class Bullet {
     //还是分装坦克的状态熟悉 默认静止状态
     private boolean moving = false;
     // 定义子弹的宽高
-    public int width=20,height=20;
+//    public int width=20,height=20;
+
+    //获取坦克的高度和宽度
+    public static int WIDTH = ResourceMgr.bulletD.getWidth();
+    public static int HEIGHT = ResourceMgr.bulletD.getHeight();
+
     //子弹也要引用这个画板大管家
     private TankFrame tf;
 

@@ -15,6 +15,9 @@ public class Tank {
     private boolean moving = false;
     //持有tankframe 的引用来获取画板 这样构造方法里面new tank的时候可以拿到这个画板
     private TankFrame tf;
+    //获取坦克的高度和宽度
+    private static int WIDTH = ResourceMgr.tankD.getWidth();
+    private static int HEIGHT = ResourceMgr.tankD.getHeight();
 
 
     public Tank(int x, int y, Dir dir, int speed,TankFrame tf) {
@@ -90,7 +93,11 @@ public class Tank {
         //这里把创建的tank交给tankFrame
 //       tf.bullet = new Bullet(this.x,this.y,this.dir);
         //画一颗子弹 容器中new 出一个子弹
-       tf.bullets.add(new Bullet(this.x,this.y,this.dir,this.getTf()));
+
+        //计算子弹的位置
+        int bX =this.x+Tank.WIDTH/2-Bullet.WIDTH;
+        int bY =this.y+Tank.HEIGHT/2-Bullet.HEIGHT;
+       tf.bullets.add(new Bullet(bX,bY,this.dir,this.getTf()));
     }
 
 }
