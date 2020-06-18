@@ -28,10 +28,28 @@ public class Tank {
     public void paint(Graphics g) {
         //这个绘画的颜色为什么没有被调用
         System.out.println("tank4===>paint");
-        Color color = g.getColor();
-        g.setColor(Color.red);
-        g.fillRect(x, y, 50, 50);
-        g.setColor(color);
+
+
+//        Color color = g.getColor();
+//        g.setColor(Color.red);
+//        g.fillRect(x, y, 50, 50);
+//        g.setColor(color);
+        //根据传入的方向加载对应方向上的tank
+        switch (dir) {
+            case LEFT:
+                g.drawImage(ResourceMgr.tankL,x,y,null);
+                break;
+            case UP:
+                g.drawImage(ResourceMgr.tankU,x,y,null);
+                break;
+            case RIGHT:
+                g.drawImage(ResourceMgr.tankR,x,y,null);
+                break;
+            case DOWN:
+                g.drawImage(ResourceMgr.tankD,x,y,null);
+                break;
+
+        }
 
         //坦克根据传入的方向移动
         move();
