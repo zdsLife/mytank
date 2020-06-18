@@ -29,12 +29,6 @@ public class Tank {
         //这个绘画的颜色为什么没有被调用
         System.out.println("tank4===>paint");
 
-
-//        Color color = g.getColor();
-//        g.setColor(Color.red);
-//        g.fillRect(x, y, 50, 50);
-//        g.setColor(color);
-        //根据传入的方向加载对应方向上的tank
         switch (dir) {
             case LEFT:
                 g.drawImage(ResourceMgr.tankL,x,y,null);
