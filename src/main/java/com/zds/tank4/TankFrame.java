@@ -1,21 +1,17 @@
 package com.zds.tank4;
 
-//import com.zds.tank3.Bullet;
-//import com.zds.tank3.Dir;
-//import com.zds.tank3.Tank;
-
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class TankFrame extends Frame {
     //引入容器装子弹
     List<Bullet> bullets = new ArrayList<Bullet>();
+    List<Tank> tanks = new ArrayList<Tank>();
     //这里把这个对象传入给了坦克
     Tank tank = new Tank(200,200, Dir.DOWN,10,this);
     Bullet bullet =new Bullet(300,300,Dir.DOWN,this);
@@ -165,24 +161,10 @@ public class TankFrame extends Frame {
         g.setColor(c);
         tank.paint(g);
 
-        //对于一次画多颗子弹
-//        for(Bullet b : bullets){
-//            b.paint(g);
-//            //响应的tank的发射方法里面需要 给单个子弹的赋给改为多个赋值
-//           }
-
         for (int i = 0; i < bullets.size(); i++) {
             bullets.get(i).paint(g);
           }
 
-          //迭代器画子弹
-//          //拿到子弹容器的迭代器
-//        for(Iterator<Bullet> it=bullets.iterator();it.hasNext();){
-//            Bullet b = it.next();
-//            if(!b.isLive()){
-//                bullets.remove(b);
-//            }
-//        }
 
         }
 
