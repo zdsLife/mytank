@@ -22,12 +22,14 @@ public class Bullet {
 
     //子弹也要引用这个画板大管家
     private TankFrame tf;
+    //给坦克分组 默认为敌方
+    private Group group = Group.BAD;
 
-
-    public Bullet(int x, int y, Dir dir,TankFrame tf) {
+    public Bullet(int x, int y, Dir dir, Group group,TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.group = group;
         this.tf = tf;
     }
     //画出子弹 制作子弹
@@ -101,6 +103,10 @@ public class Bullet {
 
     //实现子弹的碰撞方法
     public void collideWith(Tank tank){
+        //同组不开启队友伤害碰撞
+        //如果子弹的分组与坦克的分组一致 则不构成伤害
+        if(this.group==tank.getGroup()){return;}
+
         //获得子弹的矩形
         Rectangle bulletR = new Rectangle(this.x,this.y,WIDTH,HEIGHT);
         Rectangle tankR = new Rectangle(tank.getX(),tank.getY(),Tank.WIDTH,Tank.HEIGHT);

@@ -13,8 +13,8 @@ public class TankFrame extends Frame {
     List<Bullet> bullets = new ArrayList<Bullet>();
     List<Tank> tanks = new ArrayList<Tank>();
     //这里把这个对象传入给了坦克
-    Tank tank = new Tank(200,200, Dir.DOWN,10,this);
-    Bullet bullet =new Bullet(300,300,Dir.DOWN,this);
+    Tank tank = new Tank(200,200, Dir.DOWN,10,Group.GOOD,this);
+    Bullet bullet =new Bullet(300,300,Dir.DOWN,Group.GOOD,this);
     //考虑后期 这个游戏的界面宽度和高度 这里定义位全局变量
     public static int GAME_WIDTH=800,GAME_HEIGHT=600;
     public TankFrame() throws HeadlessException {

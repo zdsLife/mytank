@@ -4,27 +4,33 @@ package com.zds.tank4;
 import lombok.Data;
 
 import java.awt.*;
+import java.util.Random;
 
 @Data
 public class Tank {
     private int x,y;
     private Dir dir = Dir.DOWN;
-    private int speed = 10;
+    private int speed = 1;
     //还是分装坦克的状态熟悉 默认静止状态
-    private boolean moving = false;
+    private boolean moving = true;
     //持有tankframe 的引用来获取画板 这样构造方法里面new tank的时候可以拿到这个画板
     private TankFrame tf;
     //获取坦克的高度和宽度
     public static int WIDTH = ResourceMgr.tankD.getWidth();
     public static int HEIGHT = ResourceMgr.tankD.getHeight();
     public boolean live = true;
+    //拿到一个随机值
+    public Random random = new Random();
+    //给坦克分组 默认为敌方
+    private Group group = Group.BAD;
 
 
-    public Tank(int x, int y, Dir dir, int speed,TankFrame tf) {
+    public Tank(int x, int y, Dir dir, int speed,Group group,TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
         this.speed = speed;
+        this.group = group;
         this.tf = tf;
     }
 
@@ -90,6 +96,10 @@ public class Tank {
                 break;
 
         }
+        //坦克移动后间隔一个随机值发射子弹
+        if(random.nextInt(10)>8){
+            this.fire();
+        }
     }
     //定义坦克的发射方法
     public void fire(){
@@ -102,7 +112,8 @@ public class Tank {
         //计算子弹的位置
         int bX =this.x+Tank.WIDTH/2-Bullet.WIDTH;
         int bY =this.y+Tank.HEIGHT/2-Bullet.HEIGHT;
-       tf.bullets.add(new Bullet(bX,bY,this.dir,this.getTf()));
+        //根据子弹的分组
+       tf.bullets.add(new Bullet(bX,bY,this.dir,this.group,this.getTf()));
     }
 
 
