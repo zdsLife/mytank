@@ -1,7 +1,6 @@
 package com.zds.tank4;
 
 
-//import com.zds.tank3.Dir;
 import lombok.Data;
 
 import java.awt.*;
@@ -16,8 +15,9 @@ public class Tank {
     //持有tankframe 的引用来获取画板 这样构造方法里面new tank的时候可以拿到这个画板
     private TankFrame tf;
     //获取坦克的高度和宽度
-    private static int WIDTH = ResourceMgr.tankD.getWidth();
-    private static int HEIGHT = ResourceMgr.tankD.getHeight();
+    public static int WIDTH = ResourceMgr.tankD.getWidth();
+    public static int HEIGHT = ResourceMgr.tankD.getHeight();
+    public boolean live = true;
 
 
     public Tank(int x, int y, Dir dir, int speed,TankFrame tf) {
@@ -31,6 +31,11 @@ public class Tank {
     public void paint(Graphics g) {
         //这个绘画的颜色为什么没有被调用
         System.out.println("tank4===>paint");
+        //如果tank死亡则不用画
+        if(!this.live){
+//            return;
+        tf.tanks.remove(this);
+        }
 
         switch (dir) {
             case LEFT:
@@ -100,4 +105,9 @@ public class Tank {
        tf.bullets.add(new Bullet(bX,bY,this.dir,this.getTf()));
     }
 
+
+    public void die(){
+        System.out.println("tank die");
+        this.live = false;
+    }
 }

@@ -15,7 +15,6 @@ public class Bullet {
     //还是分装坦克的状态熟悉 默认静止状态
     private boolean moving = false;
     // 定义子弹的宽高
-//    public int width=20,height=20;
 
     //获取坦克的高度和宽度
     public static int WIDTH = ResourceMgr.bulletD.getWidth();
@@ -38,12 +37,7 @@ public class Bullet {
         if(!live){
             tf.bullets.remove(this);
         }
-//        //给子弹上色
-//        Color color = g.getColor();
-//        g.setColor(Color.GREEN);
-//        //画⚪型
-//        g.fillOval(x, y, width, height);
-//        g.setColor(color);
+
 
         switch (dir) {
             case LEFT:
@@ -105,4 +99,19 @@ public class Bullet {
         //子弹也需要移动的
     }
 
+    //实现子弹的碰撞方法
+    public void collideWith(Tank tank){
+        //获得子弹的矩形
+        Rectangle bulletR = new Rectangle(this.x,this.y,WIDTH,HEIGHT);
+        Rectangle tankR = new Rectangle(tank.getX(),tank.getY(),Tank.WIDTH,Tank.HEIGHT);
+        if(bulletR.intersects(tankR)){
+            System.out.println("inter==========================================");
+            this.die();
+            tank.die();
+        }
+    }
+
+    public void die(){
+        this.live = false;
+    }
 }

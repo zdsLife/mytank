@@ -157,7 +157,8 @@ public class TankFrame extends Frame {
         //画板左上角打印子弹的数量
         Color c = g.getColor();
         g.setColor(Color.WHITE);
-        g.drawString("打出的子弹数量位"+bullets.size(),10,60);
+        g.drawString("打出的子弹数量为"+bullets.size(),10,60);
+        g.drawString("敌方的坦克数量为"+tanks.size(),10,80);
         g.setColor(c);
         tank.paint(g);
 
@@ -170,6 +171,13 @@ public class TankFrame extends Frame {
             tanks.get(i).paint(g);
           }
 
+          //判断坦克和子弹是否相交
+        for (int i = 0; i < bullets.size(); i++) {
+            for (int j = 0; j < tanks.size(); j++) {
+               //拿坦克和子弹进行碰撞检测
+                bullets.get(i).collideWith(tanks.get(j));
+            }
+        }
 
         }
 
