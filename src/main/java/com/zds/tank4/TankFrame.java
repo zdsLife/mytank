@@ -165,6 +165,11 @@ public class TankFrame extends Frame {
             bullets.get(i).paint(g);
           }
 
+          //画地方tank
+        for (int i = 0; i < tanks.size(); i++) {
+            tanks.get(i).paint(g);
+          }
+
 
         }
 

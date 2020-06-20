@@ -13,6 +13,11 @@ public class Main {
                 e.printStackTrace();
             } finally {
             }
+
+            for (int i = 0; i < 5; i++) {
+                tankFrame.tanks.add(new Tank(50+i*80,100,Dir.DOWN,10,tankFrame));
+
+            }
             tankFrame.repaint();
         }
 
