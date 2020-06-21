@@ -48,4 +48,29 @@ public class Audio extends Thread {
     }
 
 
+    byte[] b = new byte[1024 * 1024 * 15];
+    //循環播放聲音
+    public void loop() {
+        try {
+
+            while (true) {
+                int len = 0;
+                sourceDataLine.open(audioFormat, 1024 * 1024 * 15);
+                sourceDataLine.start();
+                //System.out.println(audioInputStream.markSupported());
+                audioInputStream.mark(12358946);
+                while ((len = audioInputStream.read(b)) > 0) {
+                    sourceDataLine.write(b, 0, len);
+                }
+                audioInputStream.reset();
+
+                sourceDataLine.drain();
+                sourceDataLine.close();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

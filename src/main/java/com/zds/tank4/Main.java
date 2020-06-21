@@ -11,6 +11,8 @@ public class Main {
         }
         //上面这个书写敌方的tank 放在了下面的这个是循环里面 导致坦克的数量不断变多
         //导致 子弹击中坦克 但是坦克没有消失 原因是这个坦克是重复生成的 实际这个位置的坦克已经被消灭
+        //添加游戲背景音樂
+        new Thread(()->new Audio("audio/war1.wav").loop()).start();
         while(true){
             try {
                 Thread.sleep(100);

@@ -19,7 +19,8 @@ public class TankFrame extends Frame {
     //如何动态获取坦克爆炸的位置 为爆炸效果图片定位
     Explode e = new Explode(100,100,this);
     //考虑后期 这个游戏的界面宽度和高度 这里定义位全局变量
-    public static int GAME_WIDTH=800,GAME_HEIGHT=600;
+//    public static int GAME_WIDTH=800,GAME_HEIGHT=600;
+    public static int GAME_WIDTH=1080,GAME_HEIGHT=960;
     public TankFrame() throws HeadlessException {
         setVisible(true);
         setSize(GAME_WIDTH,GAME_HEIGHT);
