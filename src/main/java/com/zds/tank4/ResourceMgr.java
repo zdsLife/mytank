@@ -10,6 +10,8 @@ public class ResourceMgr {
     public static BufferedImage tankL,tankU,tankR,tankD;
     //子弹图片
     public static BufferedImage bulletL,bulletU,bulletR,bulletD;
+    //加载子弹或者坦克爆炸之后的效果图
+    public static BufferedImage explodes[] = new BufferedImage[16];
     //通过一个静态代码块来加载这些图片
     static{
 
@@ -24,6 +26,10 @@ public class ResourceMgr {
             bulletU = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/bulletU.gif"));
             bulletR = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/bulletR.gif"));
             bulletD = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/bulletD.gif"));
+            //用for循环遍历加载16张爆炸效果图到内存中  画出爆炸的效果图
+            for (int i = 0; i < explodes.length; i++) {
+               explodes[i]=ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/e"+(i+1)+".gif"));
+            }
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

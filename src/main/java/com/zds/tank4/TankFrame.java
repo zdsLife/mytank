@@ -15,6 +15,9 @@ public class TankFrame extends Frame {
     //这里把这个对象传入给了坦克
     Tank tank = new Tank(200,200, Dir.DOWN,10,Group.GOOD,this);
     Bullet bullet =new Bullet(300,300,Dir.DOWN,Group.GOOD,this);
+    //根据爆炸产生肯定是坦克被击毁的位置 这里先看爆炸效果 不考虑爆炸位置
+    //如何动态获取坦克爆炸的位置 为爆炸效果图片定位
+    Explode e = new Explode(100,100,this);
     //考虑后期 这个游戏的界面宽度和高度 这里定义位全局变量
     public static int GAME_WIDTH=800,GAME_HEIGHT=600;
     public TankFrame() throws HeadlessException {
@@ -179,7 +182,10 @@ public class TankFrame extends Frame {
             }
         }
 
-        }
+        //画出爆炸的效果
+        e.paint(g);
+
+    }
 
    //消除子弹的闪烁 涉及屏幕的刷新
     // 拿一个图片覆盖这个游戏界面
