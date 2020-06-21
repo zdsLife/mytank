@@ -114,6 +114,8 @@ public class Bullet {
             System.out.println("inter==========================================");
             this.die();
             tank.die();
+            //子彈與坦克爆炸処添加爆炸圖片對象
+            tf.explodes.add(new Explode(x,y,tf));//爆炸結束后把這個對象移除
         }
     }
 

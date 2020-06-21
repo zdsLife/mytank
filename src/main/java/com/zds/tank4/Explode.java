@@ -23,7 +23,8 @@ public class Explode {
         g.drawImage(ResourceMgr.explodes[step++],x,y,null);
         //不画的终止条件 爆炸数组里面的图片画完了
         if(step>=ResourceMgr.explodes.length){
-            step = 0;
+//            step = 0;//這裏爆炸完後會繼續重繪
+            tf.explodes.remove(this);//爆炸的16個圖片畫完后移除這個爆炸對象
         }
     }
 

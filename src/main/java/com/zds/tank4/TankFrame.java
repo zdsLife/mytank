@@ -17,7 +17,9 @@ public class TankFrame extends Frame {
     Bullet bullet =new Bullet(300,300,Dir.DOWN,Group.GOOD,this);
     //根据爆炸产生肯定是坦克被击毁的位置 这里先看爆炸效果 不考虑爆炸位置
     //如何动态获取坦克爆炸的位置 为爆炸效果图片定位
-    Explode e = new Explode(100,100,this);
+//    Explode e = new Explode(100,100,this);
+    //產生多個爆炸 需要一個放爆竹的容器
+    List<Explode> explodes = new ArrayList<Explode>();
     //考虑后期 这个游戏的界面宽度和高度 这里定义位全局变量
 //    public static int GAME_WIDTH=800,GAME_HEIGHT=600;
     public static int GAME_WIDTH=1080,GAME_HEIGHT=960;
@@ -163,6 +165,7 @@ public class TankFrame extends Frame {
         g.setColor(Color.WHITE);
         g.drawString("打出的子弹数量为"+bullets.size(),10,60);
         g.drawString("敌方的坦克数量为"+tanks.size(),10,80);
+        g.drawString("爆炸数量为"+explodes.size(),10,100);
         g.setColor(c);
         tank.paint(g);
 
@@ -174,8 +177,13 @@ public class TankFrame extends Frame {
         for (int i = 0; i < tanks.size(); i++) {
             tanks.get(i).paint(g);
           }
+          //畫各個爆炸圖片
+        for (int i = 0; i < explodes.size(); i++) {
+            explodes.get(i).paint(g);
+        }
+         //碰撞檢測 在碰撞的地方 new 出爆炸的對象
 
-          //判断坦克和子弹是否相交
+        //判断坦克和子弹是否相交
         for (int i = 0; i < bullets.size(); i++) {
             for (int j = 0; j < tanks.size(); j++) {
                //拿坦克和子弹进行碰撞检测
@@ -184,7 +192,7 @@ public class TankFrame extends Frame {
         }
 
         //画出爆炸的效果
-        e.paint(g);
+//        e.paint(g);
 
     }
 
