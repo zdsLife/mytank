@@ -96,11 +96,27 @@ public class Tank {
                 break;
 
         }
-        //坦克移动后间隔一个随机值发射子弹
-        if(random.nextInt(10)>8){
+        //坦克移动后间隔一个随机值发射子弹 加一個分組判斷條件(沒加之前我方坦克也會隨著這個方法發射子彈)
+        // 因爲需要敵方坦克自動發射子彈
+        //我方 通過方向鍵控制方向
+        if(this.group==Group.BAD&&random.nextInt(100)>95){
             this.fire();
         }
+        //坦克移動后 隨機移動方向
+        if(this.group == Group.BAD&&random.nextInt(100)>95){
+        randomDir();
+        }
     }
+    public void randomDir() {
+     //弄四個隨機數 映射到四個方向上
+
+            //如果不加分組條件 你會發現坦克非常鬼畜的移動s
+            this.dir =Dir.values()[random.nextInt(4)];
+
+
+
+    }
+
     //定义坦克的发射方法
     public void fire(){
         //注意这里给子弹传的参数是坦克的方向参数
