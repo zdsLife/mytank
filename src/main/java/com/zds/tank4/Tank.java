@@ -106,13 +106,22 @@ public class Tank {
         if(this.group == Group.BAD&&random.nextInt(100)>95){
         randomDir();
         }
+
+        //坦克的移動過程中添加邊界條件檢查
+        boundsCheck();
+    }
+    public void boundsCheck(){
+        //橫向和縱向的邊界條件
+        if(this.x<0){x=0;}
+        if(this.y<30){y=30;}
+        if(this.x>TankFrame.GAME_WIDTH-Tank.WIDTH){this.x=TankFrame.GAME_WIDTH-Tank.WIDTH;}
+        if(this.y>TankFrame.GAME_HEIGHT-Tank.HEIGHT){this.y=TankFrame.GAME_HEIGHT-Tank.HEIGHT;}
     }
     public void randomDir() {
      //弄四個隨機數 映射到四個方向上
 
             //如果不加分組條件 你會發現坦克非常鬼畜的移動s
             this.dir =Dir.values()[random.nextInt(4)];
-
 
 
     }
