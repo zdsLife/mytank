@@ -25,12 +25,20 @@ public class Bullet {
     //给坦克分组 默认为敌方
     private Group group = Group.BAD;
 
+    //給每一個子彈一個矩形域 用於于子彈相交
+    Rectangle rect = new Rectangle();
+
     public Bullet(int x, int y, Dir dir, Group group,TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
         this.group = group;
         this.tf = tf;
+        //recatangle
+        rect.x=this.x;
+        rect.y = this.y;
+        rect.width = WIDTH;
+        rect.height = HEIGHT;
     }
     //画出子弹 制作子弹
     public void paint(Graphics g) {
@@ -99,6 +107,10 @@ public class Bullet {
             live =false;
         }
         //子弹也需要移动的
+
+        //子彈移動完相應更新rectangle的值
+        rect.x=this.x;
+        rect.y = this.y;
     }
 
     //实现子弹的碰撞方法

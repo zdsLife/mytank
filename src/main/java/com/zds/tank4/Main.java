@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args){
         TankFrame tankFrame = new TankFrame();
         for (int i = 0; i < 5; i++) {
-            tankFrame.tanks.add(new Tank(50+i*80,50,Dir.DOWN,1,Group.BAD,tankFrame));
+            tankFrame.tanks.add(new Tank(50+i*80,50,Dir.DOWN,5,Group.BAD,tankFrame));
 
         }
         //上面这个书写敌方的tank 放在了下面的这个是循环里面 导致坦克的数量不断变多

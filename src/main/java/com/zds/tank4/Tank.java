@@ -23,7 +23,8 @@ public class Tank {
     public Random random = new Random();
     //给坦克分组 默认为敌方
     private Group group = Group.BAD;
-
+    //給每一個坦克一個矩形域 用於于子彈相交
+    Rectangle rect = new Rectangle();
 
     public Tank(int x, int y, Dir dir, int speed,Group group,TankFrame tf) {
         this.x = x;
@@ -32,6 +33,12 @@ public class Tank {
         this.speed = speed;
         this.group = group;
         this.tf = tf;
+
+        //recatangle
+        rect.x=this.x;
+        rect.y = this.y;
+        rect.width = WIDTH;
+        rect.height = HEIGHT;
     }
 
     public void paint(Graphics g) {
@@ -109,6 +116,10 @@ public class Tank {
 
         //坦克的移動過程中添加邊界條件檢查
         boundsCheck();
+
+        //矩形域隨坦克的移動而變化
+        rect.x=this.x;
+        rect.y = this.y;
     }
     public void boundsCheck(){
         //橫向和縱向的邊界條件
